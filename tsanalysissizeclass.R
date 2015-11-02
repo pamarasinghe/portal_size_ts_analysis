@@ -1,41 +1,23 @@
-# local copy of the code, did changess and commit
-get_data <- function(){
-  data <- read.csv("surveys1.csv")
-  return(data)
+biocLite("ShortRead")
+library("ShortRead")
+
+install.packages("stringr")
+library("stringr")
+
+install.packages("dplyr")
+library("dplyr")
+
+##determine GC contents
+get_gc_content <- function(dnaseq){
+  
+  # gs and cs are the number of gs and cs in the given sequence
+  gs <- str_count(dnaseq,'G')
+  cs <- str_count(dnaseq,'C')
+  
+  # gc content is the percentage of bases that are gs or cs   
+  gccontent <- (((gs+cs)/str_count(dnaseq))*100)
+  return(gccontent)
 }
 
-
-git_size_class <- function(weight){
-  if(weight>50){
-    size_class <- "large"
-  }
-  else{
-    size_class <- "small"
-  }
-  return(size)
-}
-
-
-git_size_class <- function(weight,threshold){
-  if(weight>threshold){
-    size_class <- "large"
-    
-
-
-  }
-  else{
-    size_class <- "small"
-  }
-  return(size)
-}
-
-add_size_class <- function(df){
-  data_w_size_class <-
-  df%>%
-  na.omit()%>%
-  rowwise()%>%
-  mutate(size_clas=get_size_class(weight,50))
-return(data_w_size_class)
-}
 
 
