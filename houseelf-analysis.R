@@ -36,6 +36,12 @@ get_gc_content <- function(dnaseq){
   return(gccontent)
 }
 
+get_size_class <- function(ear_length){
+   # Calculate the size class for one or more earth lengths
+   ear_lengths <- ifelse(ear_length > 10, "large", "small")
+   return(ear_lengths)
+}
+
 ### Test function for a sequence
 get_gc_content("GGCAT")
 get_gc_content(str_to_upper("ggcat"))
