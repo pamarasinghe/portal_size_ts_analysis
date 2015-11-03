@@ -36,17 +36,35 @@ get_gc_content <- function(dnaseq){
   return(gccontent)
 }
 
-get_size_class <- function(ear_length){
-   # Calculate the size class for one or more earth lengths
-   ear_lengths <- ifelse(ear_length > 10, "large", "small")
-   return(ear_lengths)
-}
-
-### Test function for a sequence
+### Test function for sequences
 get_gc_content("GGCAT")
 get_gc_content(str_to_upper("ggcat"))
+
 ### Test function for a vector
 sequences <- c("ttgaatgccttacaactgatcattacacaggcggcatgaagcaaaaatatactgtgaaccaatgcaggcg", "gauuauuccccacaaagggagugggauuaggagcugcaucauuuacaagagcagaauguuucaaaugcau", "gaaagcaagaaaaggcaggcgaggaagggaagaagggggggaaacc", "guuuccuacaguauuugaugagaaugagaguuuacuccuggaagauaauauuagaauguuuacaacugcaccugaucagguggauaaggaagaugaagacu", "gauaaggaagaugaagacuuucaggaaucuaauaaaaugcacuccaugaauggauucauguaugggaaucagccggguc")
 get_gc_content(str_to_upper(sequences))
 
+
+#Problem 7:Pulling and pushing
+##Problem7.3: new function in my repository
+get_size_class <- function(ear_length){
+  # Calculate the size class for one or more earth lengths
+  ear_lengths <- ifelse(ear_length > 10, "large", "small")
+  return(ear_lengths)
+}
+
+##Test function
+get_size_class(12.2)
+get_size_class(5.1)
+
+#Problem 7.4:create a data frame including ear length class and gccontent 
+newdata <- sequence_data %>%
+  rowwise()%>%
+  mutate(earlengthclass = get_size_class(ear_length),
+         gccontent = get_gc_content(dnaseq))
+
+results <- select(newdata, id, ear_lengths, gccontent)
+
+#Problem 7.5:Save the data frame as a csv file
+write.csv(results,"houseelf_analysis_data.csv")
 
