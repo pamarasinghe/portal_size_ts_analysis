@@ -2,7 +2,7 @@
 ##Git was installed for the operating system,new project was created,git tab appeared.
 
 #Problem 2:First commit
-## Local copy of the code, make changes and commit: file intends to calcuate average GC-contents for large-eared elves and small-eared elves 
+## Local copy of the code, make changes and commit: file intends to calculate average GC-contents for large-eared elves and small-eared elves 
 
 #Problem 3:Importing data
 ##Download files, commit files, import file and commit changes
@@ -58,12 +58,12 @@ get_size_class(12.2)
 get_size_class(5.1)
 
 #Problem 7.4:create a data frame including ear length class and gccontent 
-newdata <- sequence_data %>%
+newdata <- sequence_data%>%
   rowwise()%>%
-  mutate(earlengthclass = get_size_class(ear_length),
+  mutate(ear_lengths= get_size_class(earlength), 
          gccontent = get_gc_content(dnaseq))
 
-results <- select(newdata, id, ear_lengths, gccontent)
+results <- select(newdata, id, earlength, gccontent)
 
 #Problem 7.5:Save the data frame as a csv file
 write.csv(results,"houseelf_analysis_data.csv")
