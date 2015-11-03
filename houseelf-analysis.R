@@ -1,5 +1,5 @@
 #Problem 1: Set-up Git
-##Git was installed for the operating system,new project was created,git tab appeared.
+##Git was installed for the operating system, new project was created, git tab appeared.
 
 #Problem 2:First commit
 ## Local copy of the code, make changes and commit: file intends to calculate average GC-contents for large-eared elves and small-eared elves 
